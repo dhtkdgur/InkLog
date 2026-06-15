@@ -176,14 +176,14 @@ function generateId() {
 }
 
 function initData() {
-  if (!localStorage.getItem(STORAGE_KEY)) {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw || raw === '[]') {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(SAMPLE_DATA));
   } else {
     // 기존 로컬스토리지 데이터에서도 '페미니즘' 태그를 모두 제거하도록 마이그레이션 실행
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        let entries = JSON.parse(raw);
+      let entries = JSON.parse(raw);
+      if (Array.isArray(entries)) {
         let changed = false;
         entries = entries.map(e => {
           if (e.tags && e.tags.includes('페미니즘')) {
