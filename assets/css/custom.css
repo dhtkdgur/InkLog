@@ -490,11 +490,19 @@ body {
   border: 1.5px solid rgba(44,24,16,0.18);
   border-radius: 6px;
   font-size: 0.9rem;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
   color: #2C1810;
   background: #fff;
   transition: border-color 0.2s;
   box-sizing: border-box;
+}
+
+.inklog-form select {
+  height: 2.85rem !important;
+  line-height: normal !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  padding-right: 2rem !important;
 }
 
 .inklog-form input:focus,
