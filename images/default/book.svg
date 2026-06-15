@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 420" width="300" height="420">
+  <rect width="300" height="420" fill="#FAF7F4"/>
+  <rect x="0" y="0" width="300" height="420" rx="0" fill="#FAF7F4"/>
+  <!-- Book spine -->
+  <rect x="0" y="0" width="40" height="420" fill="#C0392B"/>
+  <!-- Page lines -->
+  <line x1="40" y1="0" x2="40" y2="420" stroke="#ddd" stroke-width="2"/>
+  <!-- Content lines -->
+  <rect x="70" y="60" width="180" height="8" rx="4" fill="#d4c9be"/>
+  <rect x="70" y="80" width="160" height="6" rx="3" fill="#e0d5ca"/>
+  <rect x="70" y="96" width="170" height="6" rx="3" fill="#e0d5ca"/>
+  <rect x="70" y="112" width="150" height="6" rx="3" fill="#e0d5ca"/>
+  <rect x="70" y="128" width="165" height="6" rx="3" fill="#e0d5ca"/>
+  <rect x="70" y="150" width="180" height="8" rx="4" fill="#d4c9be"/>
+  <rect x="70" y="168" width="155" height="6" rx="3" fill="#e0d5ca"/>
+  <rect x="70" y="184" width="170" height="6" rx="3" fill="#e0d5ca"/>
+  <rect x="70" y="200" width="145" height="6" rx="3" fill="#e0d5ca"/>
+  <!-- Book icon center -->
+  <path d="M100 240 L200 240 L200 330 L100 330 Z" fill="none" stroke="#C0392B" stroke-width="3"/>
+  <path d="M115 240 L115 330" stroke="#C0392B" stroke-width="2"/>
+  <path d="M115 255 L200 255" stroke="#C0392B" stroke-width="1.5" opacity="0.5"/>
+  <path d="M115 270 L200 270" stroke="#C0392B" stroke-width="1.5" opacity="0.5"/>
+  <path d="M115 285 L200 285" stroke="#C0392B" stroke-width="1.5" opacity="0.5"/>
+  <path d="M115 300 L200 300" stroke="#C0392B" stroke-width="1.5" opacity="0.5"/>
+  <path d="M115 315 L200 315" stroke="#C0392B" stroke-width="1.5" opacity="0.5"/>
+  <!-- Text -->
+  <text x="170" y="368" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#2C1810">책</text>
+  <text x="170" y="390" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#9a8070">BOOK</text>
+</svg>

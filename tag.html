@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+  <title>태그로 보기 — Inklog</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Inklog 태그 분석 — 자주 쓰는 태그로 나의 콘텐츠 취향을 발견하세요." />
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="assets/css/custom.css" />
+</head>
+<body class="is-preload">
+
+  <div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+
+        <!-- Header -->
+        <header id="header">
+          <a href="index.html" class="logo"><strong>Inklog</strong></a>
+          <ul class="icons">
+            <li><a href="write.html" class="icon solid fa-pen-to-square" title="감상문 쓰기"><span class="label">글쓰기</span></a></li>
+          </ul>
+        </header>
+
+        <!-- Page title -->
+        <div class="page-title-bar">
+          <h1><i class="fa-solid fa-tags" aria-hidden="true"></i>태그로 보기</h1>
+        </div>
+
+        <!-- [섹션 1] 태그 클라우드 -->
+        <section class="hero-compact">
+          <div class="section-heading">
+            <h2>전체 태그</h2>
+            <span class="section-line"></span>
+          </div>
+          <div class="tag-cloud" id="full-tag-cloud">
+            <p class="muted-note">태그를 불러오는 중...</p>
+          </div>
+        </section>
+
+        <!-- [섹션 2+3] 결과 + Top5 레이아웃 -->
+        <div class="tag-layout">
+
+          <!-- 왼쪽: 선택 태그 결과 -->
+          <div class="tag-results">
+            <div class="section-heading">
+              <h2>검색 결과</h2>
+              <span class="section-line"></span>
+            </div>
+
+            <!-- 요약 헤더 (JS가 채움) -->
+            <div class="tag-results-header" id="tag-results-title" style="display:none;"></div>
+
+            <!-- 카드 그리드 -->
+            <div id="tag-results">
+              <div class="tag-placeholder">
+                <i class="fa-solid fa-tags"></i>
+                위의 태그를 클릭하면 관련 감상문이 표시됩니다.
+              </div>
+            </div>
+          </div>
+
+          <!-- 오른쪽: Top 5 랭킹 -->
+          <div>
+            <div class="tag-sidebar-panel">
+              <h3><i class="fa-solid fa-trophy tag-panel-icon" aria-hidden="true"></i>Top 5 태그</h3>
+              <div id="top5-list">
+                <p class="muted-note">집계 중...</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div class="inner">
+
+        <a href="index.html" class="inklog-logo">Ink<span>log</span></a>
+        <span class="inklog-tagline">당신의 감상을, 잉크처럼 남기세요.</span>
+
+        <nav id="menu">
+          <header class="major"><h2>메뉴</h2></header>
+          <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> 홈</a></li>
+            <li><a href="list.html"><i class="fa-solid fa-list"></i> 전체 기록</a></li>
+            <li>
+              <span class="opener"><i class="fa-solid fa-layer-group"></i> 카테고리</span>
+              <ul>
+                <li><a href="list.html?category=movie"><i class="fa-solid fa-film"></i> 영화</a></li>
+                <li><a href="list.html?category=book"><i class="fa-solid fa-book"></i> 책</a></li>
+                <li><a href="list.html?category=webtoon"><i class="fa-solid fa-tablet"></i> 웹툰</a></li>
+                <li><a href="list.html?category=etc"><i class="fa-solid fa-ellipsis"></i> 기타</a></li>
+              </ul>
+            </li>
+            <li><a href="tag.html"><i class="fa-solid fa-tags"></i> 태그로 보기</a></li>
+            <li><a href="gallery.html"><i class="fa-solid fa-images"></i> 갤러리</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> 소개</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> 문의</a></li>
+          </ul>
+        </nav>
+
+        <section>
+          <a href="write.html" class="button primary sidebar-write-btn">
+            <i class="fa-solid fa-pen-nib" aria-hidden="true"></i> 새 감상문 쓰기
+          </a>
+        </section>
+
+        <footer id="footer">
+          <p class="copyright">&copy; Inklog. Design based on <a href="https://html5up.net">HTML5 UP</a>.</p>
+        </footer>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

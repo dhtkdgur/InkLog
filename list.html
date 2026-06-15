@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+  <title>전체 기록 — Inklog</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Inklog에 기록한 모든 감상문을 카테고리·별점·검색어로 찾아보세요." />
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="assets/css/custom.css" />
+</head>
+<body class="is-preload">
+
+  <div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+
+        <!-- Header -->
+        <header id="header">
+          <a href="index.html" class="logo"><strong>Inklog</strong></a>
+          <ul class="icons">
+            <li><a href="write.html" class="icon solid fa-pen-to-square" title="감상문 쓰기"><span class="label">글쓰기</span></a></li>
+          </ul>
+        </header>
+
+        <!-- Page title -->
+        <div class="page-title-bar">
+          <h1><i class="fa-solid fa-list" aria-hidden="true"></i>전체 감상문</h1>
+          <a href="write.html" class="btn-primary btn-compact">
+            <i class="fa-solid fa-plus" aria-hidden="true"></i> 새 감상문
+          </a>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="filter-bar">
+          <div class="filter-tabs">
+            <button class="filter-tab" data-cat="all">전체</button>
+            <button class="filter-tab" data-cat="movie"><i class="fa-solid fa-film" aria-hidden="true"></i> 영화</button>
+            <button class="filter-tab" data-cat="book"><i class="fa-solid fa-book" aria-hidden="true"></i> 책</button>
+            <button class="filter-tab" data-cat="webtoon"><i class="fa-solid fa-tablet" aria-hidden="true"></i> 웹툰</button>
+            <button class="filter-tab" data-cat="etc"><i class="fa-solid fa-ellipsis" aria-hidden="true"></i> 기타</button>
+          </div>
+          <select id="sort-select" class="sort-select" aria-label="정렬 방식">
+            <option value="newest">최신순</option>
+            <option value="rating-desc">별점 높은순</option>
+            <option value="rating-asc">별점 낮은순</option>
+          </select>
+          <form id="list-search-form" class="list-search" role="search">
+            <label for="list-search-input" class="visually-hidden">감상문 검색</label>
+            <input type="search" id="list-search-input" placeholder="제목, 작가, 태그 검색" />
+          </form>
+        </div>
+
+        <div class="list-meta"><span id="search-query-label" style="display:none;"></span>총 <strong id="entry-count">0</strong>개의 감상문</div>
+
+        <!-- Grid -->
+        <div class="cards-grid" id="list-grid"></div>
+
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div class="inner">
+
+        <a href="index.html" class="inklog-logo">Ink<span>log</span></a>
+        <span class="inklog-tagline">당신의 감상을, 잉크처럼 남기세요.</span>
+
+        <nav id="menu">
+          <header class="major"><h2>메뉴</h2></header>
+          <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> 홈</a></li>
+            <li><a href="list.html"><i class="fa-solid fa-list"></i> 전체 기록</a></li>
+            <li>
+              <span class="opener"><i class="fa-solid fa-layer-group"></i> 카테고리</span>
+              <ul>
+                <li><a href="list.html?category=movie"><i class="fa-solid fa-film"></i> 영화</a></li>
+                <li><a href="list.html?category=book"><i class="fa-solid fa-book"></i> 책</a></li>
+                <li><a href="list.html?category=webtoon"><i class="fa-solid fa-tablet"></i> 웹툰</a></li>
+                <li><a href="list.html?category=etc"><i class="fa-solid fa-ellipsis"></i> 기타</a></li>
+              </ul>
+            </li>
+            <li><a href="tag.html"><i class="fa-solid fa-tags"></i> 태그로 보기</a></li>
+            <li><a href="gallery.html"><i class="fa-solid fa-images"></i> 갤러리</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> 소개</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> 문의</a></li>
+          </ul>
+        </nav>
+
+        <section>
+          <a href="write.html" class="button primary sidebar-write-btn">
+            <i class="fa-solid fa-pen-nib" aria-hidden="true"></i> 새 감상문 쓰기
+          </a>
+        </section>
+
+        <footer id="footer">
+          <p class="copyright">&copy; Inklog. Design based on <a href="https://html5up.net">HTML5 UP</a>.</p>
+        </footer>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

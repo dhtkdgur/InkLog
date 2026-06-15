@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+  <title>Inklog — 당신의 감상을, 잉크처럼 남기세요.</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="영화, 책, 웹툰 감상문을 기록하는 나만의 공간 Inklog" />
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="assets/css/custom.css" />
+</head>
+<body class="is-preload">
+
+  <div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+
+        <!-- Header -->
+        <header id="header">
+          <a href="index.html" class="logo"><strong>Inklog</strong></a>
+          <ul class="icons">
+            <li><a href="write.html" class="icon solid fa-pen-to-square" title="감상문 쓰기"><span class="label">글쓰기</span></a></li>
+          </ul>
+        </header>
+
+        <!-- [섹션 1] Hero Banner -->
+        <section id="hero-banner">
+          <div class="hero-content">
+            <p class="hero-eyebrow"><i class="fa-solid fa-feather" aria-hidden="true"></i> &nbsp;INKLOG</p>
+            <h1>당신의 감상을,<br><em>잉크처럼</em> 남기세요.</h1>
+            <p>영화, 책, 웹툰을 보고 느낀 감동을<br>나만의 언어로 기록하는 공간입니다.</p>
+            <div class="hero-actions">
+              <a href="write.html" class="btn-hero">
+                <i class="fa-solid fa-pen-nib" aria-hidden="true"></i> 글쓰기 시작
+              </a>
+              <a href="list.html" class="btn-hero ghost">
+                <i class="fa-solid fa-list" aria-hidden="true"></i> 전체 목록
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- [섹션 2] 검색 바 -->
+        <section>
+          <form id="home-search-form" class="home-search" role="search">
+            <label for="home-search-input" class="visually-hidden">감상문 검색</label>
+            <input type="search" id="home-search-input" placeholder="제목, 작가, 태그로 검색해보세요" />
+            <button type="submit"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> 검색</button>
+          </form>
+        </section>
+
+        <!-- [섹션 3] 통계 카운터 -->
+        <section>
+          <div class="stats-row">
+            <div class="stat-card">
+              <span class="stat-number" data-count-target="all">0</span>
+              <span class="stat-label">총 감상문</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number" data-count-target="movie">0</span>
+              <span class="stat-label">영화</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number" data-count-target="book">0</span>
+              <span class="stat-label">책</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number" data-count-target="webtoon">0</span>
+              <span class="stat-label">웹툰</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number" data-count-target="etc">0</span>
+              <span class="stat-label">기타</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- [섹션 4] 카테고리 바로가기 -->
+        <section>
+          <div class="section-heading">
+            <h2><i class="fa-solid fa-layer-group" aria-hidden="true"></i>카테고리</h2>
+            <span class="section-line"></span>
+          </div>
+          <div class="cat-cards">
+            <a href="list.html?category=movie" class="cat-card">
+              <i class="fa-solid fa-film cat-icon" aria-hidden="true"></i>
+              <span class="cat-name">영화</span>
+              <span class="cat-count" data-cat-count="movie">0</span>
+            </a>
+            <a href="list.html?category=book" class="cat-card">
+              <i class="fa-solid fa-book cat-icon" aria-hidden="true"></i>
+              <span class="cat-name">책</span>
+              <span class="cat-count" data-cat-count="book">0</span>
+            </a>
+            <a href="list.html?category=webtoon" class="cat-card">
+              <i class="fa-solid fa-tablet cat-icon" aria-hidden="true"></i>
+              <span class="cat-name">웹툰</span>
+              <span class="cat-count" data-cat-count="webtoon">0</span>
+            </a>
+            <a href="list.html?category=etc" class="cat-card">
+              <i class="fa-solid fa-ellipsis cat-icon" aria-hidden="true"></i>
+              <span class="cat-name">기타</span>
+              <span class="cat-count" data-cat-count="etc">0</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- [섹션 5] 오늘의 문장 -->
+        <section id="daily-quote-section">
+          <div class="section-heading">
+            <h2><i class="fa-solid fa-quote-left" aria-hidden="true"></i>오늘의 문장</h2>
+            <span class="section-line"></span>
+          </div>
+          <div class="daily-quote">
+            <blockquote id="daily-quote-text"></blockquote>
+            <p class="quote-source" id="daily-quote-source"></p>
+          </div>
+        </section>
+
+        <!-- [섹션 6] 최신 감상문 -->
+        <section>
+          <div class="section-heading">
+            <h2><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i>최신 감상문</h2>
+            <span class="section-line"></span>
+            <a href="list.html" class="see-all">전체 보기 →</a>
+          </div>
+          <div class="cards-grid" id="recent-grid"></div>
+        </section>
+
+        <!-- [섹션 7] 이달의 베스트 -->
+        <section id="best-section">
+          <div class="section-heading">
+            <h2><i class="fa-solid fa-trophy" aria-hidden="true"></i>베스트 기록</h2>
+            <span class="section-line"></span>
+          </div>
+          <div class="cards-grid" id="best-grid"></div>
+        </section>
+
+        <!-- [섹션 8] 월별 기록 -->
+        <section>
+          <div class="section-heading">
+            <h2><i class="fa-solid fa-calendar-days" aria-hidden="true"></i>월별 기록</h2>
+            <span class="section-line"></span>
+          </div>
+          <div class="rating-chart" id="monthly-chart"></div>
+        </section>
+
+        <!-- [섹션 9] 별점 분포 -->
+        <section>
+          <div class="section-heading">
+            <h2><i class="fa-solid fa-chart-bar" aria-hidden="true"></i>별점 분포</h2>
+            <span class="section-line"></span>
+          </div>
+          <div class="rating-chart">
+            <div class="rating-row">
+              <span class="stars-label">★★★★★</span>
+              <div class="rating-bar-track"><div class="rating-bar-fill" data-rating-bar="5"></div></div>
+              <span class="count-label">0개</span>
+            </div>
+            <div class="rating-row">
+              <span class="stars-label">★★★★☆</span>
+              <div class="rating-bar-track"><div class="rating-bar-fill" data-rating-bar="4"></div></div>
+              <span class="count-label">0개</span>
+            </div>
+            <div class="rating-row">
+              <span class="stars-label">★★★☆☆</span>
+              <div class="rating-bar-track"><div class="rating-bar-fill" data-rating-bar="3"></div></div>
+              <span class="count-label">0개</span>
+            </div>
+            <div class="rating-row">
+              <span class="stars-label">★★☆☆☆</span>
+              <div class="rating-bar-track"><div class="rating-bar-fill" data-rating-bar="2"></div></div>
+              <span class="count-label">0개</span>
+            </div>
+            <div class="rating-row">
+              <span class="stars-label">★☆☆☆☆</span>
+              <div class="rating-bar-track"><div class="rating-bar-fill" data-rating-bar="1"></div></div>
+              <span class="count-label">0개</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- [섹션 10] 태그 클라우드 미리보기 -->
+        <section>
+          <div class="section-heading">
+            <h2><i class="fa-solid fa-tags" aria-hidden="true"></i>인기 태그</h2>
+            <span class="section-line"></span>
+            <a href="tag.html" class="see-all">모든 태그 보기 →</a>
+          </div>
+          <div class="tag-cloud" id="tag-cloud-preview"></div>
+        </section>
+
+        <!-- Inklog 소개 features -->
+        <section>
+          <div class="section-heading">
+            <h2><i class="fa-solid fa-star" aria-hidden="true"></i>Inklog와 함께</h2>
+            <span class="section-line"></span>
+          </div>
+          <div class="features">
+            <article>
+              <span class="icon solid fa-film"></span>
+              <div class="content">
+                <h3>영화 · 책 · 웹툰</h3>
+                <p>카테고리별로 감상문을 분류해 체계적으로 관리하세요.</p>
+              </div>
+            </article>
+            <article>
+              <span class="icon solid fa-star"></span>
+              <div class="content">
+                <h3>별점 &amp; 한줄평</h3>
+                <p>5점 만점 별점과 한줄평으로 감상을 빠르게 기록하세요.</p>
+              </div>
+            </article>
+            <article>
+              <span class="icon solid fa-tags"></span>
+              <div class="content">
+                <h3>태그로 취향 분석</h3>
+                <p>자유 태그로 기록하고, 나만의 취향 패턴을 발견하세요.</p>
+              </div>
+            </article>
+            <article>
+              <span class="icon solid fa-lock"></span>
+              <div class="content">
+                <h3>완전 로컬</h3>
+                <p>모든 데이터는 내 브라우저에만 저장됩니다. 서버가 없어요.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div class="inner">
+
+        <a href="index.html" class="inklog-logo">Ink<span>log</span></a>
+        <span class="inklog-tagline">당신의 감상을, 잉크처럼 남기세요.</span>
+
+        <nav id="menu">
+          <header class="major"><h2>메뉴</h2></header>
+          <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> 홈</a></li>
+            <li><a href="list.html"><i class="fa-solid fa-list" aria-hidden="true"></i> 전체 기록</a></li>
+            <li>
+              <span class="opener"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> 카테고리</span>
+              <ul>
+                <li><a href="list.html?category=movie"><i class="fa-solid fa-film" aria-hidden="true"></i> 영화</a></li>
+                <li><a href="list.html?category=book"><i class="fa-solid fa-book" aria-hidden="true"></i> 책</a></li>
+                <li><a href="list.html?category=webtoon"><i class="fa-solid fa-tablet" aria-hidden="true"></i> 웹툰</a></li>
+                <li><a href="list.html?category=etc"><i class="fa-solid fa-ellipsis" aria-hidden="true"></i> 기타</a></li>
+              </ul>
+            </li>
+            <li><a href="tag.html"><i class="fa-solid fa-tags" aria-hidden="true"></i> 태그로 보기</a></li>
+            <li><a href="gallery.html"><i class="fa-solid fa-images" aria-hidden="true"></i> 갤러리</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> 소개</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-envelope" aria-hidden="true"></i> 문의</a></li>
+          </ul>
+        </nav>
+
+        <section>
+          <a href="write.html" class="button primary sidebar-write-btn">
+            <i class="fa-solid fa-pen-nib" aria-hidden="true"></i> 새 감상문 쓰기
+          </a>
+        </section>
+
+        <footer id="footer">
+          <p class="copyright">&copy; Inklog. Design based on <a href="https://html5up.net">HTML5 UP</a>.</p>
+        </footer>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

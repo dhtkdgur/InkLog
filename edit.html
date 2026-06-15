@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+  <title>감상문 수정 — Inklog</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Inklog 감상문 수정 — 작성한 감상문의 내용을 고칠 수 있습니다." />
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="assets/css/custom.css" />
+</head>
+<body class="is-preload">
+
+  <div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+
+        <!-- Header -->
+        <header id="header">
+          <a href="index.html" class="logo"><strong>Inklog</strong></a>
+          <ul class="icons">
+            <li><a href="list.html" class="icon solid fa-list" title="목록으로"><span class="label">목록</span></a></li>
+          </ul>
+        </header>
+
+        <!-- Page title -->
+        <div class="page-title-bar spaced">
+          <h1 id="page-title"><i class="fa-solid fa-pen" aria-hidden="true"></i>감상문 수정</h1>
+        </div>
+
+        <!-- Form -->
+        <form id="write-form" class="inklog-form" novalidate>
+
+          <!-- 카테고리 -->
+          <div class="form-group">
+            <label for="f-category">카테고리 <span class="required">*</span></label>
+            <select id="f-category" name="category">
+              <option value="">-- 선택해주세요 --</option>
+              <option value="movie">영화</option>
+              <option value="book">책</option>
+              <option value="webtoon">웹툰</option>
+              <option value="etc">기타</option>
+            </select>
+            <div class="field-error" id="err-category"></div>
+          </div>
+
+          <!-- 콘텐츠 제목 -->
+          <div class="form-group">
+            <label for="f-title">콘텐츠 제목 <span class="required">*</span></label>
+            <input type="text" id="f-title" name="title" placeholder="예: 기생충, 채식주의자, 미생" />
+            <div class="field-error" id="err-title"></div>
+          </div>
+
+          <!-- 감독·저자 -->
+          <div class="form-group">
+            <label for="f-creator">감독 / 저자 / 작가 <span class="label-optional">(선택)</span></label>
+            <input type="text" id="f-creator" name="creator" placeholder="예: 봉준호, 한강, 윤태호" />
+          </div>
+
+          <!-- 별점 -->
+          <div class="form-group">
+            <label>별점 <span class="required">*</span></label>
+            <div class="star-input" id="star-input" role="group" aria-label="별점 선택">
+              <i class="fa-regular fa-star" data-val="1" title="1점"></i>
+              <i class="fa-regular fa-star" data-val="2" title="2점"></i>
+              <i class="fa-regular fa-star" data-val="3" title="3점"></i>
+              <i class="fa-regular fa-star" data-val="4" title="4점"></i>
+              <i class="fa-regular fa-star" data-val="5" title="5점"></i>
+            </div>
+            <div class="field-error" id="err-rating"></div>
+          </div>
+
+          <!-- 커버 이미지 URL -->
+          <div class="form-group">
+            <label for="f-cover">커버 이미지 URL <span class="label-optional">(선택)</span></label>
+            <input type="text" id="f-cover" name="coverUrl" placeholder="https://example.com/cover.jpg" />
+            <div class="field-hint">입력하지 않으면 카테고리별 기본 이미지가 사용됩니다.</div>
+          </div>
+
+          <!-- 감상 날짜 -->
+          <div class="form-group">
+            <label for="f-watchedat">감상 날짜 <span class="label-optional">(선택)</span></label>
+            <input type="date" id="f-watchedat" name="watchedAt" />
+          </div>
+
+          <!-- 감상 장소 -->
+          <div class="form-group">
+            <label for="f-place">감상 장소 <span class="label-optional">(선택)</span></label>
+            <input type="text" id="f-place" name="place" placeholder="예: 극장, OTT, 도서관, 집" />
+          </div>
+
+          <!-- 재감상 여부 -->
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="f-isrewatch" name="isRewatch" />
+              재관람 / 재독 (다시 감상한 작품)
+            </label>
+          </div>
+
+          <!-- 인용구 (book 전용) -->
+          <div class="form-group" id="quote-group" style="display:none;">
+            <label for="f-quote">인상 깊은 구절 <span class="label-optional">(선택)</span></label>
+            <textarea id="f-quote" name="quote" class="textarea-short" placeholder="책에서 가장 인상 깊었던 문장을 적어보세요."></textarea>
+          </div>
+
+          <!-- 한줄평 -->
+          <div class="form-group">
+            <label for="f-summary">한줄평 <span class="required">*</span></label>
+            <input type="text" id="f-summary" name="summary" placeholder="이 작품을 한 문장으로 표현한다면?" maxlength="120" />
+            <div class="field-error" id="err-summary"></div>
+          </div>
+
+          <!-- 본문 -->
+          <div class="form-group">
+            <label for="f-content">감상문 본문 <span class="required">*</span></label>
+            <textarea id="f-content" name="content" placeholder="자유롭게 감상을 적어주세요. 줄바꿈도 그대로 반영됩니다."></textarea>
+            <div class="field-error" id="err-content"></div>
+          </div>
+
+          <!-- 태그 -->
+          <div class="form-group">
+            <label for="f-tags">태그 <span class="label-optional">(선택)</span></label>
+            <input type="text" id="f-tags" name="tags" placeholder="봉준호, 아카데미, 스릴러"
+                   list="tags-datalist" autocomplete="off" />
+            <datalist id="tags-datalist"></datalist>
+            <div class="field-hint">쉼표(,)로 구분해 여러 태그를 입력할 수 있습니다.</div>
+            <div class="tag-preview-area" id="tag-preview"></div>
+          </div>
+
+          <!-- 버튼 -->
+          <div class="form-actions">
+            <button type="submit" id="submit-btn" class="btn-primary">
+              <i class="fa-solid fa-floppy-disk"></i> 수정 저장
+            </button>
+            <a id="btn-cancel" href="list.html" class="btn-secondary">
+              <i class="fa-solid fa-xmark"></i> 취소
+            </a>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div class="inner">
+
+        <a href="index.html" class="inklog-logo">Ink<span>log</span></a>
+        <span class="inklog-tagline">당신의 감상을, 잉크처럼 남기세요.</span>
+
+        <nav id="menu">
+          <header class="major"><h2>메뉴</h2></header>
+          <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> 홈</a></li>
+            <li><a href="list.html"><i class="fa-solid fa-list"></i> 전체 기록</a></li>
+            <li>
+              <span class="opener"><i class="fa-solid fa-layer-group"></i> 카테고리</span>
+              <ul>
+                <li><a href="list.html?category=movie"><i class="fa-solid fa-film"></i> 영화</a></li>
+                <li><a href="list.html?category=book"><i class="fa-solid fa-book"></i> 책</a></li>
+                <li><a href="list.html?category=webtoon"><i class="fa-solid fa-tablet"></i> 웹툰</a></li>
+                <li><a href="list.html?category=etc"><i class="fa-solid fa-ellipsis"></i> 기타</a></li>
+              </ul>
+            </li>
+            <li><a href="tag.html"><i class="fa-solid fa-tags"></i> 태그로 보기</a></li>
+            <li><a href="gallery.html"><i class="fa-solid fa-images"></i> 갤러리</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> 소개</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> 문의</a></li>
+          </ul>
+        </nav>
+
+        <section>
+          <a href="write.html" class="button primary sidebar-write-btn">
+            <i class="fa-solid fa-pen-nib" aria-hidden="true"></i> 새 감상문 쓰기
+          </a>
+        </section>
+
+        <footer id="footer">
+          <p class="copyright">&copy; Inklog. Design based on <a href="https://html5up.net">HTML5 UP</a>.</p>
+        </footer>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // edit.html: 취소 버튼을 이전 상세 페이지로 연결
+    document.addEventListener('DOMContentLoaded', function() {
+      var id = new URLSearchParams(window.location.search).get('id');
+      if (id) {
+        var cancelBtn = document.getElementById('btn-cancel');
+        if (cancelBtn) cancelBtn.href = 'detail.html?id=' + encodeURIComponent(id);
+      }
+    });
+  </script>
+</body>
+</html>
