@@ -267,12 +267,13 @@ function initIndex() {
   const quoteSection = document.getElementById('daily-quote-section');
   if (quoteSection) {
     const withQuote = entries.filter(e => e.quote && e.quote.trim());
+    const quoteEl = document.getElementById('daily-quote-text');
+    const srcEl = document.getElementById('daily-quote-source');
     if (withQuote.length === 0) {
-      quoteSection.style.display = 'none';
+      if (quoteEl) quoteEl.textContent = "아직 기록된 인용구가 없습니다. 책을 읽고 마음을 울린 한 줄을 남겨보세요.";
+      if (srcEl) srcEl.innerHTML = "— Inklog 가이드";
     } else {
       const pick = withQuote[Math.floor(Math.random() * withQuote.length)];
-      const quoteEl = document.getElementById('daily-quote-text');
-      const srcEl = document.getElementById('daily-quote-source');
       if (quoteEl) quoteEl.textContent = pick.quote;
       if (srcEl) {
         srcEl.innerHTML = `— <a href="detail.html?id=${esc(pick.id)}">${esc(pick.title)}</a>${pick.creator ? ', ' + esc(pick.creator) : ''}`;
@@ -402,6 +403,88 @@ function initWrite() {
       const submitBtn = document.getElementById('submit-btn');
       if (submitBtn) submitBtn.textContent = '수정 저장';
     }
+  }
+
+  // UX 1: 새 글 작성 시 감상 날짜에 오늘 날짜 자동 기입
+  if (!editEntry) {
+    const dateInput = document.getElementById('f-watchedat');
+    if (dateInput) {
+      const today = new Date();
+      const offset = today.getTimezoneOffset() * 60000;
+      const localISOTime = (new Date(today - offset)).toISOString().slice(0, 10);
+      dateInput.value = localISOTime;
+    }
+  }
+
+  // UX 2: 커버 이미지 실시간 미리보기 기능
+  const coverInput = document.getElementById('f-cover');
+  const coverPreviewWrapper = document.getElementById('cover-preview-wrapper');
+  const coverPreview = document.getElementById('cover-preview');
+
+  function updateCoverPreview() {
+    const url = coverInput ? coverInput.value.trim() : '';
+    if (url) {
+      if (coverPreview) {
+        coverPreview.src = url;
+        if (coverPreviewWrapper) coverPreviewWrapper.style.display = 'block';
+      }
+    } else {
+      if (coverPreviewWrapper) coverPreviewWrapper.style.display = 'none';
+    }
+  }
+
+  if (coverInput) {
+    coverInput.addEventListener('input', updateCoverPreview);
+    if (coverPreview) {
+      coverPreview.addEventListener('error', function () {
+        if (coverPreviewWrapper) coverPreviewWrapper.style.display = 'none';
+      });
+    }
+    // 수정 모드일 때 기존 URL 미리보기 출력
+    if (editEntry && editEntry.coverUrl) {
+      updateCoverPreview();
+    }
+  }
+
+  // UX 3: 카테고리 선택에 따라 라벨 및 플레이스홀더 동적 변경
+  const categoryEl = document.getElementById('f-category');
+  const titleInput = document.getElementById('f-title');
+  const creatorLabel = document.querySelector('label[for="f-creator"]');
+  const creatorInput = document.getElementById('f-creator');
+
+  const PLACEHOLDERS = {
+    movie: '예: 기생충, 라라랜드, 다크 나이트',
+    book: '예: 채식주의자, 아몬드, 사피엔스',
+    webtoon: '예: 나 혼자만 레벨업, 미생, 화산귀환',
+    etc: '예: 콘서트, 팟캐스트, 전시회, 공연'
+  };
+
+  const CREATOR_LABELS = {
+    movie: '감독 / 주연 배우 <span class="label-optional">(선택)</span>',
+    book: '저자 / 작가 / 번역가 <span class="label-optional">(선택)</span>',
+    webtoon: '글 / 그림 작가 <span class="label-optional">(선택)</span>',
+    etc: '창작자 / 아티스트 <span class="label-optional">(선택)</span>'
+  };
+
+  function updateCategoryUI() {
+    const cat = categoryEl ? categoryEl.value : '';
+    if (titleInput) {
+      titleInput.placeholder = PLACEHOLDERS[cat] || '예: 작품 제목을 입력하세요.';
+    }
+    if (creatorLabel) {
+      creatorLabel.innerHTML = CREATOR_LABELS[cat] || '감독 / 저자 / 작가 <span class="label-optional">(선택)</span>';
+    }
+    if (creatorInput) {
+      creatorInput.placeholder = cat === 'movie' ? '예: 봉준호, 크리스토퍼 놀란' :
+                                 cat === 'book' ? '예: 한강, 유발 하라리' :
+                                 cat === 'webtoon' ? '예: 추공, 장성락' : '예: 창작자 혹은 아티스트명';
+    }
+  }
+
+  if (categoryEl) {
+    categoryEl.addEventListener('change', updateCategoryUI);
+    // 수정 모드이거나 카테고리가 이미 정해진 경우 UI 즉시 초기화
+    updateCategoryUI();
   }
 
   // Star rating

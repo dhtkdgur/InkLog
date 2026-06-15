@@ -79,6 +79,9 @@
             <label for="f-cover">커버 이미지 URL <span class="label-optional">(선택)</span></label>
             <input type="text" id="f-cover" name="coverUrl" placeholder="https://example.com/cover.jpg" />
             <div class="field-hint">입력하지 않으면 카테고리별 기본 이미지가 사용됩니다.</div>
+            <div id="cover-preview-wrapper" style="display:none; margin-top: 0.8rem; text-align: center;">
+              <img id="cover-preview" src="" alt="커버 이미지 미리보기" style="max-height: 180px; border-radius: 6px; border: 1px solid #ddd; box-shadow: 0 2px 8px rgba(0,0,0,0.1); object-fit: cover;" />
+            </div>
           </div>
 
           <!-- 감상 날짜 -->
