@@ -64,7 +64,7 @@ const SAMPLE_DATA = [
     content: '한강 작가가 노벨문학상을 받기 훨씬 전부터 세계 문학계가 주목한 작품. 세 편의 연작으로 구성된 이 소설은 채식주의자 선언을 한 여자 영혜의 이야기를 각기 다른 시점으로 풀어낸다.\n\n인간의 폭력성과 그에 저항하는 방식, 몸과 정신의 경계, 사회적 규범에 대한 거부를 섬세하고 시적인 문장으로 담아냈다. 읽는 내내 불편하지만 눈을 뗄 수 없다.\n\n맨부커 인터내셔널상 수상작이자 현대 한국 문학의 정수. 다 읽고 나서 한참 멍하니 앉아있었다.',
     quote: '나는 꿈을 꾸었다. 내 몸속 어딘가에서 무언가가 자라고 있었다. 천천히, 그러나 확실하게.',
     coverUrl: '',
-    tags: ['한강', '노벨문학상', '맨부커', '페미니즘', '문학'],
+    tags: ['한강', '노벨문학상', '맨부커', '문학'],
     watchedAt: '2024-12-01',
     place: '서울 북카페',
     isRewatch: false,
@@ -96,7 +96,7 @@ const SAMPLE_DATA = [
     content: '1982년생 김지영 씨의 삶을 통해 한국 여성이 경험하는 사회적 차별과 불평등을 담담하게 기록한 소설. 소설이라기보다는 르포에 가까울 만큼 현실적이다.\n\n김지영의 이야기가 특별하지 않다는 점, 이것이 수많은 여성들의 평범한 일상이었다는 점이 이 책의 가장 강렬한 메시지다. 읽는 내내 분노와 슬픔이 교차했다.\n\n사회적으로 많은 논쟁을 불러일으킨 책이지만, 그 논쟁 자체가 이 책의 필요성을 증명한다. 많은 사람들이 읽어야 할 책이다.',
     quote: '당신은 어떻게 살고 싶었나요? 당신이 원하는 삶은 무엇이었나요?',
     coverUrl: '',
-    tags: ['조남주', '페미니즘', '사회소설', '공감', '한국사회'],
+    tags: ['조남주', '사회소설', '공감', '한국사회'],
     watchedAt: '2024-07-04',
     place: '집',
     isRewatch: false,
@@ -178,6 +178,27 @@ function generateId() {
 function initData() {
   if (!localStorage.getItem(STORAGE_KEY)) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(SAMPLE_DATA));
+  } else {
+    // 기존 로컬스토리지 데이터에서도 '페미니즘' 태그를 모두 제거하도록 마이그레이션 실행
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        let entries = JSON.parse(raw);
+        let changed = false;
+        entries = entries.map(e => {
+          if (e.tags && e.tags.includes('페미니즘')) {
+            e.tags = e.tags.filter(t => t !== '페미니즘');
+            changed = true;
+          }
+          return e;
+        });
+        if (changed) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
   }
 }
 
