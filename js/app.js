@@ -518,7 +518,6 @@ function initWrite() {
   if (editEntry) updateStars(editEntry.rating);
 
   // Quote field toggle (book only)
-  const categoryEl = document.getElementById('f-category');
   function toggleQuoteField() {
     const quoteGroup = document.getElementById('quote-group');
     if (quoteGroup) {
@@ -1009,4 +1008,11 @@ document.addEventListener('DOMContentLoaded', function () {
   else if (page === 'gallery.html')          initGallery();
   else if (page === 'tag.html')              initTag();
   else if (page === 'about.html')            initAbout();
+
+  // 스토리지 차단 상태(로컬 파일 열기 등)일 경우 경고 알림 표시
+  if (typeof InklogData !== 'undefined' && !InklogData.isStorageAvailable()) {
+    setTimeout(() => {
+      showToast("⚠️ 로컬 파일(file:///) 환경에서는 데이터가 영구 저장되지 않고 임시 모드로만 작동합니다.");
+    }, 1000);
+  }
 });
